@@ -1,3 +1,5 @@
+package Day2;
+
 public class PasswordFormat {
 
     int position1;
@@ -5,7 +7,7 @@ public class PasswordFormat {
     char letter;
     String password;
 
-    public PasswordFormat(int position1, int position2, char letter, String password){
+    public PasswordFormat(int position1, int position2, char letter, String password) {
 
         this.position1 = position1;
         this.position2 = position2;

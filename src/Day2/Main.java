@@ -1,3 +1,5 @@
+package Day2;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        ArrayList <PasswordFormat> passwords = new ArrayList();
+        ArrayList<PasswordFormat> passwords = new ArrayList();
 
         File file = new File("src/passwords.txt");
         System.out.println(new File(".").getAbsoluteFile());
@@ -16,7 +18,7 @@ public class Main {
         BufferedReader br = new BufferedReader(fr);
         String line;
 
-        while ((line=br.readLine())!=null){
+        while ((line = br.readLine()) != null) {
 
             PasswordFormat parsedPassword = parsePassword(line);
             passwords.add(parsedPassword);
@@ -27,20 +29,20 @@ public class Main {
 
         int q1Counter = 0;
         for (int i = 0; i < passwords.size(); i++) {
-            if (q1.checkValid(passwords.get(i))){
+            if (q1.checkValid(passwords.get(i))) {
                 q1Counter++;
             }
         }
 
         int q2Counter = 0;
         for (int i = 0; i < passwords.size(); i++) {
-            if (q2.checkValid(passwords.get(i))){
+            if (q2.checkValid(passwords.get(i))) {
                 q2Counter++;
             }
         }
     }
 
-    public static PasswordFormat parsePassword(String line){
+    public static PasswordFormat parsePassword(String line) {
 
         int position1, position2;
         char letter;
