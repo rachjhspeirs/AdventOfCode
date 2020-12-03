@@ -12,7 +12,7 @@ public class Main {
 
         ArrayList<PasswordFormat> passwords = new ArrayList();
 
-        File file = new File("src/passwords.txt");
+        File file = new File("src/Day2/passwords.txt");
         System.out.println(new File(".").getAbsoluteFile());
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
