@@ -24,8 +24,8 @@ public class Main {
             passwords.add(parsedPassword);
         }
 
-        Question1 q1 = new Question1();
-        Question2 q2 = new Question2();
+        Part1 q1 = new Part1();
+        Part2 q2 = new Part2();
 
         int q1Counter = 0;
         for (int i = 0; i < passwords.size(); i++) {

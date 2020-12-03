@@ -1,6 +1,6 @@
 package Day2;
 
-public class Question1 {
+public class Part1 {
 
     public static boolean checkValid(PasswordFormat pf) {
         int count = 0;
