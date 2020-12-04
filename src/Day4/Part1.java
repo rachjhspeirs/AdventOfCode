@@ -20,7 +20,6 @@ public class Part1 {
         System.out.println("Number of Valid Passports: " + validPassports.size());
 
         return validPassports;
-
     }
 
     public static List<String> fileSplitByLine() {
