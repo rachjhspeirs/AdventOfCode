@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Part1 {
 
-    public static void part1Run() {
+    public static ArrayList<HashMap<String, String>> part1Run() {
 
         List<String> allLines = fileSplitByLine();
 
@@ -18,6 +18,8 @@ public class Part1 {
         ArrayList<HashMap<String, String>> validPassports = getValidPassports(allPassports);
 
         System.out.println("Number of Valid Passports: " + validPassports.size());
+
+        return validPassports;
 
     }
 
