@@ -2,14 +2,16 @@ package Day5;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Part1 {
+public class Main {
 
     public static void main(String[] args) {
         try {
-            ArrayList<String> boardingPasses = readFile();
-            ArrayList<Integer> IDs = getSeat(boardingPasses);
-            int highestID = getHighestID(IDs);
+            ArrayList<String> lines = readFile();
+            ArrayList<Integer> allIDs = new ArrayList<>();
+            ArrayList<BoardingPass> boardingPasses = getSeat(lines, allIDs);
+            int highestID = getHighestID(boardingPasses);
 
             System.out.println("Highest ID: " + highestID);
 
@@ -19,7 +21,7 @@ public class Part1 {
     }
 
     public static ArrayList<String> readFile() throws IOException {
-        ArrayList<String> boardingPasses = new ArrayList();
+        ArrayList<String> lines = new ArrayList();
 
         File file = new File("src/Day5/boardingpasses.txt");
         FileReader fr = new FileReader(file);
@@ -27,23 +29,25 @@ public class Part1 {
         String line;
 
         while ((line = br.readLine()) != null) {
-            boardingPasses.add(line);
+            lines.add(line);
         }
-        return boardingPasses;
+        return lines;
     }
 
-    public static ArrayList<Integer> getSeat(ArrayList<String> boardingPasses){
-        ArrayList<Integer> IDs = new ArrayList<>();
+    public static ArrayList<BoardingPass> getSeat(ArrayList<String> lines, ArrayList<Integer> allIDs){
+        ArrayList<BoardingPass> boardingPasses = new ArrayList<>();
 
-        for (String boardingPass : boardingPasses) {
+        for (String boardingPass : lines) {
 
             int rowNumber = binarySearchRowNumber(boardingPass.toCharArray(), 0, 127, 0);
             int seatNumber = binarySearchSeatNumber(boardingPass.substring(7).toCharArray(), 0, 7, 0);
-
             int ID = rowNumber * 8 + seatNumber;
-            IDs.add(ID);
+            BoardingPass bp = new BoardingPass(rowNumber, seatNumber, ID);
+            boardingPasses.add(bp);
+            allIDs.add(ID);
+
         }
-        return IDs;
+        return boardingPasses;
     }
 
     public static int binarySearchRowNumber (char[] boardingPass, int l, int r, int x){
@@ -73,11 +77,11 @@ public class Part1 {
         return mid;
     }
 
-    public static int getHighestID(ArrayList<Integer> allIDs){
-        int maxID = allIDs.get(0);
-        for (int i = 0; i < allIDs.size(); i++) {
-            if (allIDs.get(i) > maxID){
-                maxID = allIDs.get(i);
+    public static int getHighestID(ArrayList<BoardingPass> allBoardingPasses){
+        int maxID = allBoardingPasses.get(0).getID();
+        for (int i = 0; i < allBoardingPasses.size(); i++) {
+            if (allBoardingPasses.get(i).getID() > maxID){
+                maxID = allBoardingPasses.get(i).getID();
             }
         }
         return maxID;
