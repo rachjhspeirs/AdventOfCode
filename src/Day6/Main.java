@@ -14,13 +14,12 @@ public class Main {
         ArrayList<String> distinctChars = getDistinctChars(allLines);
         int totalVal = getTotalSum(distinctChars);
 
-        System.out.println("Total Sum: " + totalVal);
+        System.out.println("Part 1 - Total Sum: " + totalVal);
     }
 
     public static ArrayList<String> fileSplitByLine() {
 
         ArrayList<String> allLines = new ArrayList<>();
-
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/Day6/customs.txt"));
             String str = "";
@@ -44,8 +43,6 @@ public class Main {
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
